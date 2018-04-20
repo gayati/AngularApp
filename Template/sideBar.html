@@ -1,0 +1,35 @@
+<section layout="row">
+  <md-sidenav style="margin-top:60px;  height: 100%; width: 200px; position:fixed;" class="md-sidenav-left" md-component-id="left">
+
+    <md-subheader class="md-primary"><strong>Manufacturer</strong></md-subheader>
+    <div class="sidebardiv" ng-repeat='item in mydata | unique : "manufacturer"'>
+      <md-checkbox class="md-secondary">
+        {{ item.specs.manufacturer}}
+      </md-checkbox>
+    </div>
+
+    <md-subheader class="md-primary"><strong>Storage</strong></md-subheader>
+    <div class="sidebardiv" ng-repeat="item in mydata | unique : 'storage'">
+      <md-checkbox class="md-secondary">
+        <p> {{ item.specs.storage}} </p>
+    </div>
+    </md-checkbox>
+
+    <md-subheader class="md-primary"><strong>Camera</strong></md-subheader>
+    <div class="sidebardiv"  ng-repeat="item in mydata | unique : 'camera'">
+      <md-checkbox class="md-secondary" aria-label="Sidenav">
+        <p> {{ item.specs.camera}} </p>
+    </div>
+    </md-checkbox>
+
+    <md-subheader class="md-primary"><strong>Operating System</strong></md-subheader>
+    <div class="sidebardiv"  ng-repeat="item in mydata | unique : 'os'">
+      <md-checkbox class="md-secondary">
+        <p> {{ item.specs.os}} </p>
+    </div>
+    </md-checkbox>
+
+
+
+  </md-sidenav>
+</section>

@@ -1,19 +1,18 @@
-
-<div layout="row" layout-padding layout-align="space-around">
+<div layout="row" layout-padding layout-align="space-around" class="login1">
   <div class="padded" md-whiteframe="{{height}}" flex-gt-sm="50" flex-sm="45" layout="column" layout-align="center center" align="center">
     <!-- <md-content layout-padding> -->
     <form name="loginForm">
       <md-toolbar>
         <div class="md-toolbar-tools">
-       <h2 md-truncate flex style="font-weight: bold;">Login</h2>
-     </div>
+          <h2 md-truncate flex style="font-weight: bold;">Login</h2>
+        </div>
       </md-toolbar>
       <md-input-container class="md-block">
         <label>Email</label>
-        <input required type="email" name="userEmail" ng-model="userEmail" minlength="10" maxlength="50" ng-pattern="/^.+@.+\..+$/" />
+        <input required type="email" name="userEmail" ng-model="userEmail" ng-pattern="/^.+@.+\..+$/" />
         <div ng-messages="loginForm.userEmail.$error" role="alert">
-          <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-            Your email must be between 10 and 50 characters long and look like an e-mail address.
+          <div ng-show="loginForm.userEmail.$invalid" ng-message-exp="['required', 'pattern']">
+          Invalid e-mail address.
           </div>
         </div>
       </md-input-container>
@@ -21,12 +20,12 @@
         <label>Password</label>
         <input required type="password" name="userPassword" ng-model="userPassword" minlength="6" maxlength="8" />
         <div ng-messages="loginForm.userPassword.$error" role="alert">
-          <div ng-message-exp="['required', 'minlength', 'maxlength']">
+          <div  ng-show="loginForm.userPassword.$invalid" ng-message-exp="['required', 'minlength', 'maxlength']">
             Your password must be between 6 and 8 characters long.
           </div>
         </div>
       </md-input-container>
-      <md-button class="md-raised md-primary">Log-In</md-button>
+      <md-button class="md-raised md-primary" ng-disabled="!loginForm.$valid" ng-click="goTohome()">Log-In</md-button>
     </form>
     <!-- </md-content> -->
   </div>

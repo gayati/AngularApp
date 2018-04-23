@@ -14,6 +14,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
     .state('home.dashboard', {
       url: '/dashboard',
       templateUrl: 'Template/dashBoard.html',
+        controller: 'dashboardcontroller'
     });
 
   $urlRouterProvider.otherwise('/login');

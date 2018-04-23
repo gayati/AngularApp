@@ -3,27 +3,28 @@
 
     <md-subheader class="md-primary"><strong>Manufacturer</strong></md-subheader>
     <div class="sidebardiv" ng-repeat='item in mydata | unique : "manufacturer"'>
-      <md-checkbox class="md-secondary">
+
+      <md-checkbox class="md-secondary" ng-click='storearray(item.specs.manufacturer,"manufacturer")' aria-label="checkbox">
         {{ item.specs.manufacturer}}
       </md-checkbox>
     </div>
 
     <md-subheader class="md-primary"><strong>Storage</strong></md-subheader>
     <div class="sidebardiv" ng-repeat="item in mydata | unique : 'storage'">
-      <md-checkbox class="md-secondary">
-        <p> {{ item.specs.storage}} </p>
+      <md-checkbox class="md-secondary" ng-click='storeStoragearray( item.specs.storage,"storage")'>
+        {{ item.specs.storage}}
+      </md-checkbox>
     </div>
-    </md-checkbox>
 
     <md-subheader class="md-primary"><strong>Camera</strong></md-subheader>
-    <div class="sidebardiv"  ng-repeat="item in mydata | unique : 'camera'">
-      <md-checkbox class="md-secondary" aria-label="Sidenav">
+    <div class="sidebardiv" ng-repeat="item in mydata | unique : 'camera'">
+      <md-checkbox class="md-secondary" ng-click='storearray( item.specs.camera,"manufacturer")'>
         <p> {{ item.specs.camera}} </p>
     </div>
     </md-checkbox>
 
     <md-subheader class="md-primary"><strong>Operating System</strong></md-subheader>
-    <div class="sidebardiv"  ng-repeat="item in mydata | unique : 'os'">
+    <div class="sidebardiv" ng-repeat="item in mydata | unique : 'os'">
       <md-checkbox class="md-secondary">
         <p> {{ item.specs.os}} </p>
     </div>

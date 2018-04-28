@@ -1,28 +1,35 @@
-myApp.controller('dashboardcontroller', function($scope,$mdDialog) {
-$scope.showDialogue = function(ev,item) {
-    $mdDialog.show({
-      controller: dialoguecontroller,
-      templateUrl: 'Template/imageDialogue.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose:true,
-      fullscreen: $scope.customFullscreen, // Only for -xs, -sm breakpoints.
-      locals : {mydata1 : item}
-    //  $scope.mydata1 = mydata;
-  });
-  };
-
-     function dialoguecontroller($scope,mydata1) {
-       $scope.mydata2 = mydata1;
-     }
-
-    // .then(function(answer) {
-    //   $scope.status = 'You said the information was "' + answer + '".';
-    // }, function() {
-    //   $scope.status = 'You cancelled the dialog.';
-    //});
-
-
+ /******************************************************************************
+  *  Purpose         : Dashboard controller for controlling dashboard.html.
+  *  @description
+  *  @file           : dashboardController.js
+  *  @overview       : to handle events on dashboard.html.
+  *  @author         : Gayatri Kawade
+  *  @version        : 1.0
+  *  @since          : 16-04-2018
+  ******************************************************************************/
+ myApp.controller('dashboardController', function($scope, $mdDialog) {
+   $scope.showDialogue = function(clickEvent, item) {
+     $mdDialog.show({
+       controller: dialogueController,
+       templateUrl: 'Template/imageDialogue.html',
+       parent: angular.element(document.body),
+       targetEvent: clickEvent,
+       clickOutsideToClose: true,
+       fullscreen: $scope.customFullscreen,
+       locals: {
+         mobileData: item
+       }
+     });
+   };
 
 
-});
+   /*
+    * @description DialogController for handling dialog controls.
+    * @param {service} $scope is a service
+    * @param {service} $mdDialog is a service
+    * @param {object} mobileData clicked object data
+    */
+   function dialogueController($scope, mobileData) {
+     $scope.mobileData = mobileData;
+   }
+ });

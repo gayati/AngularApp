@@ -4,17 +4,17 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
     .state('login', {
       url: '/login',
       templateUrl: 'Template/login.html',
-      controller: 'logincontroller'
+      controller: 'loginController'
     })
     .state('home', {
       url: '/home',
       templateUrl: 'Template/homepage.html',
-      controller: 'homecontroller'
+      controller: 'homeController'
     })
     .state('home.dashboard', {
       url: '/dashboard',
       templateUrl: 'Template/dashBoard.html',
-        controller: 'dashboardcontroller'
+      controller: 'dashboardController'
     });
 
   $urlRouterProvider.otherwise('/login');

@@ -1,6 +1,47 @@
-.sidebardiv{
-  padding-left: 30px;
-}
-.login1{
-  margin: 80px;
+  /*CSS for sidebar*/
+
+  .sidebardiv {
+    padding-left: 30px;
+  }
+
+  .login-div {
+    margin: 80px;
+  }
+
+  .dialogue-div {
+    max-width: 750px;
+    max-height: 560px;
+  }
+
+  .dialogue-image {
+    max-width: 500px;
+    max-height: 460px;
+  }
+
+  .md-sidenav-left {
+    margin-top: 65px;
+    width: 200px;
+    position: fixed;
+  }
+
+  .dashboard-div {
+    margin-top: 60px;
+    margin-left: 150px;
+  }
+
+  .md-toolbar-tools {
+    position: fixed;
+  }
+
+  .loginform {
+    width: 80%;
+  }
+
+  .dashboard-button {
+    width: 35%;
+    margin: auto;
+    margin-bottom: 25px;
+  }
+.md-title{
+  align-self: center;
 }

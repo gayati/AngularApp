@@ -1,26 +1,31 @@
-<div layout="row" layout-padding layout-align="space-around" class="login1">
-  <div class="padded" md-whiteframe="{{height}}" flex-gt-sm="50" flex-sm="45" layout="column" layout-align="center center" align="center">
+<!-- /**********************************************************************************
+ *  Purpose         : Login page of mobile Application
+ *  @file           : login.html
+ *  @author         : Gayatri Kawade
+ *  @version        : 1.0
+ *  @since          : 20-04-2018
+ **********************************************************************************/ -->
+<div layout="row" layout-padding layout-align="space-around" class="login-div">
+  <div class="padded md-whiteframe-10dp" flex-gt-sm="50" flex-sm="100" layout="column" layout-align="center center" align="center">
     <!-- <md-content layout-padding> -->
-    <form name="loginForm">
-      <md-toolbar>
-        <div class="md-toolbar-tools">
-          <h2 md-truncate flex style="font-weight: bold;">Login</h2>
-        </div>
-      </md-toolbar>
+    <md-toolbar>
+      <h2>Login</h2>
+    </md-toolbar>
+    <form name="loginForm" class="loginform">
       <md-input-container class="md-block">
         <label>Email</label>
-        <input required type="email" name="userEmail" ng-model="userEmail" ng-pattern="/^.+@.+\..+$/" />
+        <input required type="email" name="userEmail" ng-model="userEmail" ng-pattern="/^.+@.+\..+$/" style="max-width:1500px;" />
         <div ng-messages="loginForm.userEmail.$error" role="alert">
           <div ng-show="loginForm.userEmail.$invalid" ng-message-exp="['required', 'pattern']">
-          Invalid e-mail address.
+            Invalid e-mail address.
           </div>
         </div>
       </md-input-container>
       <md-input-container class="md-block">
         <label>Password</label>
-        <input required type="password" name="userPassword" ng-model="userPassword" minlength="6" maxlength="8" />
+        <input required type="password" name="userPassword" ng-model="userPassword" minlength="6" maxlength="8"/>
         <div ng-messages="loginForm.userPassword.$error" role="alert">
-          <div  ng-show="loginForm.userPassword.$invalid" ng-message-exp="['required', 'minlength', 'maxlength']">
+          <div ng-show="loginForm.userPassword.$invalid" ng-message-exp="['required', 'minlength', 'maxlength']">
             Your password must be between 6 and 8 characters long.
           </div>
         </div>

@@ -1,3 +1,16 @@
-<div>
-  <img ng-src =  "{{ mydata2.image.large }}"  alt="image caption">
+<!-- /**********************************************************************************
+ *  Purpose         : Dialogue-box to diaplay large image.
+ *  @file           : imageDialogue.html
+ *  @author         : Gayatri Kawade
+ *  @version        : 1.0
+ *  @since          : 20-04-2018
+ **********************************************************************************/ -->
+<div class="dialogue-div">
+  <md-toolbar>
+    <p> {{mobileData.name}} </p>
+  </md-toolbar>
+  <div style="padding:20px;">
+    <img class="dialogue-image" ng-src="{{ mobileData.image.large }}" alt="image caption" style="display:block;">
+    <p>{{mobileData.description}}</p>
+  </div>
 </div>

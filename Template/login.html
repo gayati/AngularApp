@@ -1,10 +1,3 @@
-<!-- /**********************************************************************************
- *  Purpose         : Login page of mobile Application
- *  @file           : login.html
- *  @author         : Gayatri Kawade
- *  @version        : 1.0
- *  @since          : 20-04-2018
- **********************************************************************************/ -->
 <div layout="row" layout-padding layout-align="space-around" class="login-div">
   <div class="padded md-whiteframe-10dp" flex-gt-sm="50" flex-sm="100" layout="column" layout-align="center center" align="center">
     <!-- <md-content layout-padding> -->
@@ -14,7 +7,7 @@
     <form name="loginForm" class="loginform">
       <md-input-container class="md-block">
         <label>Email</label>
-        <input required type="email" name="userEmail" ng-model="userEmail" ng-pattern="/^.+@.+\..+$/" style="max-width:1500px;" />
+        <input required type="email" name="userEmail" ng-model="userEmail" ng-pattern="/(^[\w]+@+[a-zA-Z]+\.+[a-zA-z]{2,3}$)/" style="max-width:1500px;" />
         <div ng-messages="loginForm.userEmail.$error" role="alert">
           <div ng-show="loginForm.userEmail.$invalid" ng-message-exp="['required', 'pattern']">
             Invalid e-mail address.

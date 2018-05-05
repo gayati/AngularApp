@@ -4,10 +4,22 @@
     padding-left: 30px;
   }
 
+  .md-sidenav-left {
+    margin-top: 65px;
+    width: 200px;
+    position: fixed;
+  }
+
+  /*CSS for loginpage*/
   .login-div {
     margin: 80px;
   }
 
+  .loginform {
+    width: 80%;
+  }
+
+   /*CSS for Dialo*/
   .dialogue-div {
     max-width: 750px;
     max-height: 560px;
@@ -16,12 +28,6 @@
   .dialogue-image {
     max-width: 500px;
     max-height: 460px;
-  }
-
-  .md-sidenav-left {
-    margin-top: 65px;
-    width: 200px;
-    position: fixed;
   }
 
   .dashboard-div {
@@ -33,15 +39,12 @@
     position: fixed;
   }
 
-  .loginform {
-    width: 80%;
-  }
-
   .dashboard-button {
     width: 35%;
-    margin: auto;
-    margin-bottom: 25px;
+    /*margin: auto;
+    margin-bottom: 25px;*/
   }
-.md-title{
-  align-self: center;
-}
+
+  .md-title {
+    align-self: center;
+  }

@@ -1,0 +1,12 @@
+<div style="margin-left : 100px; margin-top : 65px">
+  <h1>Shopping-Cart</h1>
+  <ul class="list-group">
+    <li  class="list-group-item" ng-repeat="mobile in products">
+    <h4><b>{{mobile.specs.manufacturer}}</b></h4><span flex="200px"></span>{{mobile.price}}
+      <label for="quantity">Quantity</label>
+       <select ng-options="option for option in listOfOptions"  ng-model="selectedItem" ng-change="selectChanged(mobile,selectedItem)"> </select>
+       <!-- {{selectedItem}} -->
+       <h4>{{mobile.sum}}</h4>
+    </li>
+  </ul>
+</div>

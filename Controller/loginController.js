@@ -8,13 +8,11 @@
  *  @since          : 16-04-2018
  ******************************************************************************/
 myApp.controller('loginController', function($scope, $state) {
+
   $scope.email = "";
   $scope.password = "";
 
   $scope.goTohome = function() {
     $state.go('home.dashboard');
   }
-
-
-
 });

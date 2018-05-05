@@ -2,11 +2,15 @@
  *  Purpose         :This is for getting unique values from json file.
  *  @description
  *  @file           :uniqueFilter.js
- *  @overview       :
  *  @author         : Gayatri Kawade
  *  @version        : 1.0
  *  @since          : 16-04-2018
  ******************************************************************************/
+ /*
+  * @description unique filter to get the unique values from json file.
+  * @param {array} filteredArray to store the unique elements.
+  * @var {boolean} flag Boolean default false.
+  */
 myApp.filter('unique', function() {
   return function(jsonData, key) {
     var filteredArray = [];

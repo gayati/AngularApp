@@ -1,6 +1,6 @@
 /******************************************************************************
  *  Purpose         : sidebar custom directive
- *  @description
+ *  @description    : This is custome directive for redirecting to sideBar.html 
  *  @file           : sidebar.js
  *  @overview       : custom directive for sidebar
  *  @author         : Gayatri Kawade

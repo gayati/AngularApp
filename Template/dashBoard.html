@@ -1,29 +1,23 @@
-<!-- /**********************************************************************************
- *  Purpose         :
- *  @file           : dashBoard.html
- *  @author         : Gayatri Kawade
- *  @version        : 1.0
- *  @since          : 20-04-2018
- **********************************************************************************/ -->
-<div class="dashboard-div">
-  <div layout="row" layout-xs='column' layout-wrap>
-    <md-card flex-gt-xs='30' flex-xs='100' ng-repeat="item in mydata | selectFilter : manufacturerList: storageList: cameraList :osList ">
-      <md-card-header>
-        <md-card-header-text>
-          <span class="md-title">{{item.name}}</span>
-        </md-card-header-text>
-      </md-card-header>
-      <img ng-src="{{ item.image.small }}" alt="image caption">
-      <md-card-content>
+<div layout="row" layout-xs='column' layout-wrap class='dashboard-div'>
+  <md-card flex-gt-xs='30' flex-xs='100' ng-repeat="item in mydata | selectFilter : manufacturerList: storageList: cameraList :osList ">
+    <md-card-header>
+      <md-card-header-text>
+        <span class="md-title">{{item.name}}</span>
+      </md-card-header-text>
+    </md-card-header>
+    <img ng-src="{{ item.image.small }}" alt="image caption">
+    <md-card-content>
 
-          <p> <strong>Manufacturer:</strong>{{item.specs.manufacturer}} </p>
-          <p> <strong>Storage:</strong>{{item.specs.storage}} </p>
-          <p> <strong>OS:</strong>{{item.specs.os}}</p>
-          <p> <strong>Camera:</strong>{{item.specs.camera}} </p>
-          <p> <strong>Price:</strong>{{item.price}} </p>
+      <p> <strong>Manufacturer:</strong>{{item.specs.manufacturer}} </p>
+      <p> <strong>Storage:</strong>{{item.specs.storage}} </p>
+      <p> <strong>OS:</strong>{{item.specs.os}}</p>
+      <p> <strong>Camera:</strong>{{item.specs.camera}} </p>
+      <p> <strong>Price:</strong>{{item.price}} </p>
 
-      </md-card-content>
-      <md-button class="md-raised md-primary dashboard-button" ng-click="showDialogue($event,item)"><strong>VIEW</strong></md-button>
-    </md-card>
-  </div>
+    </md-card-content>
+    <div>
+    <md-button class="md-raised md-primary dashboard-button" ng-click="showDialogue($event,item)"><strong>VIEW</strong></md-button>
+    <md-button class="md-raised md-primary dashboard-button" ng-click="addTocart(item)"><strong>ADD TO CART</strong></md-button>
+    <div>
+  </md-card>
 </div>

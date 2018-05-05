@@ -8,7 +8,7 @@
  *  @since          : 16-04-2018
  ******************************************************************************/
 
-myApp.controller('homeController', function($scope, $mdSidenav, JsonService, $filter, $state) {
+myApp.controller('homeController', function($scope, $mdSidenav, JsonService, $filter, $state, $rootScope) {
   var manufacturerArray = [];
   var storeageArray = [];
   var cameraArray = [];
@@ -16,7 +16,8 @@ myApp.controller('homeController', function($scope, $mdSidenav, JsonService, $fi
 
   /*
    * @description DialogController for handling dialog controls.
-   * @param {service} $scope is a service
+   * @function buildToggler to toggle the sidebar to left
+   * @param {service} $mdSidenav is a service
    */
   $scope.toggleLeft = buildToggler('left');
 
@@ -26,21 +27,22 @@ myApp.controller('homeController', function($scope, $mdSidenav, JsonService, $fi
     };
   }
 
+  /*
+   * @method goToLoginPage() - this method is for redirecting to login page.
+   */
   $scope.goToLoginPage = function() {
     $state.go('login');
   }
 
   JsonService.getData().then(function(response) {
-    var data1 = response.data;
-    $scope.mydata = data1;
+    var data = response.data;
+    $scope.mydata = data;
   })
 
   /*
-   * @description pushSplicemethod for .
-   * @param {service} $scope is a service
-   *
+   * @description pushSplicemethod is for adding or removing items from the array.
+   * @var {int} index - gives the index value of itemSelected.
    */
-
   pushSpliceMethod = function(array, itemSelected) {
     var index = array.indexOf(itemSelected);
     if (index > -1) {
@@ -50,6 +52,17 @@ myApp.controller('homeController', function($scope, $mdSidenav, JsonService, $fi
     }
   }
 
+
+
+  /*
+   * @description storeArray method to store the item selected in an array.
+   * @param {string} key is the category of item.
+   * @param {string} itemSelected is the item selected on clicking on the checkbox.
+   * @param {array} manufacturerArray is to store the list of manufacturer of selected mobile.
+   * @param {string} storeageArray is to store the list of storage of selected mobile.
+   * @param {string} cameraArray is to store the list of camera of selected mobile.
+   * @param {string} operatingsystemArray is to store the list of OS of selected mobile.
+   */
   $scope.storeArray = function(key, itemSelected) {
     switch (key) {
       case 'manufacturer':
@@ -72,17 +85,25 @@ myApp.controller('homeController', function($scope, $mdSidenav, JsonService, $fi
   }
 });
 
+/*
+ * @description selectFilter to filter the items selected.
+ * @param {array} selectArray is to store the selected items.
+ * @param {array} tempArray is to store the whole list of different kinds of selectes items.
+ */
 myApp.filter('selectFilter', function() {
   return function(jsonData, manufacturerList, storageList, cameraList, osList) {
     var tempArray = [];
     var selectArray = [];
-
     var checkFunction = function(list, jsonData, key) {
       loopingFunction(list, jsonData, key);
       tempArray = selectArray;
       selectArray = [];
     }
 
+    /*
+     * @method loopingFunction -this method is to store the filtered items.
+     * @param
+     */
     var loopingFunction = function(list, jsonData, key) {
       for (var i = 0; i < jsonData.length; i++) {
         var item = jsonData[i];

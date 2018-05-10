@@ -7,7 +7,7 @@
     <form name="loginForm" class="loginform">
       <md-input-container class="md-block">
         <label>Email</label>
-        <input required type="email" name="userEmail" ng-model="userEmail" ng-pattern="/(^[\w]+@+[a-zA-Z]+\.+[a-zA-z]{2,3}$)/" style="max-width:1500px;" />
+        <input required type="email" name="userEmail" id="email" ng-model="userEmail" ng-pattern="/(^[\w]+@+[a-zA-Z]+\.+[a-zA-z]{2,3})$/" style="max-width:1500px;" />
         <div ng-messages="loginForm.userEmail.$error" role="alert">
           <div ng-show="loginForm.userEmail.$invalid" ng-message-exp="['required', 'pattern']">
             Invalid e-mail address.
@@ -16,7 +16,7 @@
       </md-input-container>
       <md-input-container class="md-block">
         <label>Password</label>
-        <input required type="password" name="userPassword" ng-model="userPassword" minlength="6" maxlength="8"/>
+        <input required type="password" name="userPassword" id="password" ng-model="userPassword" minlength="6" maxlength="8"/>
         <div ng-messages="loginForm.userPassword.$error" role="alert">
           <div ng-show="loginForm.userPassword.$invalid" ng-message-exp="['required', 'minlength', 'maxlength']">
             Your password must be between 6 and 8 characters long.

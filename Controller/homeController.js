@@ -8,11 +8,17 @@
  *  @since          : 16-04-2018
  ******************************************************************************/
 
-myApp.controller('homeController', function($scope, $mdSidenav, JsonService, $filter, $state, $rootScope) {
+myApp.controller('homeController', function($rootScope,$window,$scope, $mdSidenav, JsonService, $filter, $state, $rootScope) {
   var manufacturerArray = [];
   var storeageArray = [];
   var cameraArray = [];
   var operatingsystemArray = [];
+
+  $rootScope.cartArray1=JSON.parse($window.localStorage.getItem('cart'));
+  //console.log($rootScope.cartArray1);
+  //  $scope.allCount = JsonService.count1;
+
+
 
   /*
    * @description DialogController for handling dialog controls.
@@ -24,6 +30,7 @@ myApp.controller('homeController', function($scope, $mdSidenav, JsonService, $fi
   function buildToggler(componentId) {
     return function() {
       $mdSidenav(componentId).toggle();
+      console.log(JsonService.count1);
     };
   }
 
@@ -38,6 +45,9 @@ myApp.controller('homeController', function($scope, $mdSidenav, JsonService, $fi
     var data = response.data;
     $scope.mydata = data;
   })
+
+  // $scope.itemsArray = JsonService.cartItems
+  // console.log($scope.itemsArray.length);
 
   /*
    * @description pushSplicemethod is for adding or removing items from the array.
@@ -83,6 +93,7 @@ myApp.controller('homeController', function($scope, $mdSidenav, JsonService, $fi
     $scope.cameraList = cameraArray;
     $scope.osList = operatingsystemArray;
   }
+
 });
 
 /*
@@ -100,7 +111,7 @@ myApp.filter('selectFilter', function() {
       selectArray = [];
     }
 
-    /*
+    /* $scope.products
      * @method loopingFunction -this method is to store the filtered items.
      * @param
      */
@@ -111,6 +122,7 @@ myApp.filter('selectFilter', function() {
           var selectItem = list[j];
           if (item.specs[key] == selectItem) {
             selectArray.push(item);
+            break;
           }
         }
       }
@@ -119,6 +131,7 @@ myApp.filter('selectFilter', function() {
     if (jsonData != undefined) {
       if (manufacturerList != undefined || storageList != undefined || cameraList != undefined || osList != undefined) {
         if (manufacturerList.length > 0) {
+          console.log(manufacturerList);
           checkFunction(manufacturerList, jsonData, "manufacturer");
         } else {
           tempArray = jsonData;

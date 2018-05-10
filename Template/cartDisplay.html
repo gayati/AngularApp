@@ -1,12 +1,70 @@
-<div style="margin-left : 100px; margin-top : 65px">
-  <h1>Shopping-Cart</h1>
-  <ul class="list-group">
-    <li  class="list-group-item" ng-repeat="mobile in products">
-    <h4><b>{{mobile.specs.manufacturer}}</b></h4><span flex="200px"></span>{{mobile.price}}
-      <label for="quantity">Quantity</label>
-       <select ng-options="option for option in listOfOptions"  ng-model="selectedItem" ng-change="selectChanged(mobile,selectedItem)"> </select>
-       <!-- {{selectedItem}} -->
-       <h4>{{mobile.sum}}</h4>
-    </li>
-  </ul>
+<div style="padding-top:35px" "cartArray.length !== 0">
+  <md-subheader>
+    <h2>Shopping-Cart</h2></md-subheader>
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-2">
+      <h4>Price</h4></div>
+    <div class="col-sm-2">
+      <h4>Quantity</h4></div>
+    <div class="col-sm-2">
+      <h4>SubTotal</h4></div>
+  </div>
 </div>
+
+<md-divider></md-divider>
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="mobile in products">
+    <div class="row">
+      <div class="col-sm-2">
+        <img ng-src="{{ mobile.image.small }}" alt="image caption" style=" width: 150px;">
+      </div>
+      <div class="col-sm-2">
+        <h4><b>{{mobile.name}}</b></h4>
+        <h6>Customer Reviews</h6>
+        <jk-rating-stars rating="firstRate" ></jk-rating-stars>
+            <div style="width: 100px">{{firstRate}} Stars</div>
+      </div>
+      <div class="col-sm-2">
+        <h4>{{mobile.price | currency}}</h4></div>
+      <div class="col-sm-2">
+        <select ng-options="option for option in listOfOptions" ng-model="selectedItem"
+         ng-change="selectChanged(mobile,selectedItem)" ng-init="selectChanged(mobile,1)">
+        </select>
+      </div>
+      <!-- <div class="col-sm-2">
+          <h4>{{mobile.count}}</h4></div> -->
+      <div class="col-sm-2">
+        <h4>{{mobile.sum | currency}}</h4>
+        <!-- <h4>{{mobile.price*mobile.count}}</h4> -->
+      </div>
+      <div class="col-sm-2">
+      <input class="btn btn-danger" type="button" ng-click="removeItemCart(mobile)" value="Remove" />
+    </div>
+          </li>
+    </div>
+  </li>
+</ul>
+  <div class="col-sm-6"></div>
+  <div class="col-sm-2">
+    <h4><b>TotalPrice</b></h4></div>
+<div class="col-sm-2">
+  <h4>{{total1 |currency }}</h4></div>
+</div>
+
+<!-- <md-list>
+
+   <md-list-item ng-repeat="mobile in products">
+     <div class="row">
+       <div class="col-sm-2"><img ng-src="{{ mobile.image.small }}" alt="image caption" style="width:150px"></div>
+       <div class="col-sm-2"> <h4><b>{{mobile.name}}</b></h4></span></div>
+       <div class="col-sm-2"><h4>${{mobile.price}}</h4></div>
+       <div class="col-sm-2"><label for="quantity">Quantity</label>
+         <select ng-options="option for option in listOfOptions" ng-model="selectedItem" ng-change="selectChanged(mobile,selectedItem)"> </select>
+       </div>
+       <div class="col-sm-2"><h4>{{mobile.sum}}</h4> </div></div>
+     <md-divider></md-divider>
+   </md-list-item>
+
+ </md-list> -->
+<!-- </div> -->

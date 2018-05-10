@@ -1,4 +1,4 @@
-var myApp = angular.module('mobileApp', ['ui.router', 'ngMaterial']);
+var myApp = angular.module('mobileApp', ['ui.router', 'ngMaterial', 'jkAngularRatingStars']);
 myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('login', {

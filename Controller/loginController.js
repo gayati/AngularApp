@@ -9,10 +9,19 @@
  ******************************************************************************/
 myApp.controller('loginController', function($scope, $state) {
 
-  $scope.email = "";
-  $scope.password = "";
+  // $scope.email = ""
+  // $scope.password = "";
+  // $scope.demo =function() {
+  //
+  // }
 
   $scope.goTohome = function() {
+    var mailId = document.getElementById("email").value;
+    var passWord = document.getElementById("password").value;
+    console.log(mailId);
+    console.log(passWord);
     $state.go('home.dashboard');
   }
+
+
 });

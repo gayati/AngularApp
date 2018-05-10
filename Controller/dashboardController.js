@@ -7,7 +7,8 @@
   *  @version        : 1.0
   *  @since          : 16-04-2018
   ******************************************************************************/
- myApp.controller('dashboardController', function($scope, $rootScope, $mdDialog) {
+ myApp.controller('dashboardController', function($scope, $rootScope, $mdDialog, $window,
+   JsonService) {
    $scope.showDialogue = function(clickEvent, item) {
      $mdDialog.show({
        controller: dialogueController,
@@ -33,59 +34,41 @@
      $scope.mobileData = mobileData;
    }
 
-   //   var cart=[];
-   //   $rootScope.count = 0;
-   // $scope.addTocart = function(jsonData) {
-   //   if(jsonData !=undefined){
-   //     cart.push(jsonData);
-   //     if(cart.length == 0){
-   //
-   //     }
-   //   }
-   //
-   // }
 
 
-   $rootScope.cartArray = [];
-   //$rootScope.count = 0;
+   var jsonArray = JSON.parse($window.localStorage.getItem('cart'));
+   if (jsonArray != undefined) {
+     $scope.cartArray = jsonArray;
+   } else {
+     $scope.cartArray = [];
+   }
+
+   console.log($scope.cartArray);
    $scope.addTocart = function(jsonData) {
-     //console.log(jsonData);
      if (jsonData != undefined) {
-       if ($rootScope.cartArray.length === 0) {
+       if ($scope.cartArray.length === 0) {
          jsonData.count = 1;
-         // $rootScope.count =jsonData.count;
-         // $rootScope.count = 1;
-         $rootScope.cartArray.push(jsonData);
-         // console.log( jsonData.count );
-         // console.log($scope.cartArray);
-            //    console.log($rootScope.cartArray);
+         $scope.cartArray.push(jsonData);
+         $window.localStorage.setItem('cart', JSON.stringify($scope.cartArray));
+         $rootScope.cartArray1 = JSON.parse($window.localStorage.getItem('cart'));
        } else {
          var repeat = false;
-         for (var i = 0; i < $rootScope.cartArray.length; i++) {
-           if ($rootScope.cartArray[i].id === jsonData.id) {
-             //       console.log("cid" + $rootScope.cartArray[i].id);
-             //       console.log("id" + jsonData.id);
+         for (var i = 0; i < $scope.cartArray.length; i++) {
+           if ($scope.cartArray[i].id === jsonData.id) {
              repeat = true;
-             $rootScope.cartArray[i].count += 1;
-             // $rootScope.count =  $scope.cartArray[i].count ;
-             //console.log($scope.cartArray[i].count );
-             //       console.log($rootScope.cartArray.length);
-             // console.log($scope.cartArray);
+             $scope.cartArray[i].count += 1;
+             $window.localStorage.setItem('cart', JSON.stringify($scope.cartArray));
+             $rootScope.cartArray1 = JSON.parse($window.localStorage.getItem('cart'));
            }
          }
          if (!repeat) {
            jsonData.count = 1;
-           //  $rootScope.count =jsonData.count;
-           $rootScope.cartArray.push(jsonData);
-           //console.log(jsonData.count);
-           //     console.log($rootScope.cartArray.length);
-           // console.log($scope.cartArray);
-
+           $scope.cartArray.push(jsonData);
+           $window.localStorage.setItem('cart', JSON.stringify($scope.cartArray));
+           console.log(JSON.parse($window.localStorage.getItem('cart')));
+           $rootScope.cartArray1 = JSON.parse($window.localStorage.getItem('cart'));
          }
        }
      }
    }
-
-
-
  });
